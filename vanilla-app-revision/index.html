@@ -18,6 +18,26 @@
     <div class="container">
       <div class="weather-app-wrapper">
         <div class="app-wrapper">
+          <form id="search-form" class="mb-5">
+            <div class="row">
+              <div class="col-9">
+                <input
+                  type="search"
+                  placeholder="Enter city name"
+                  class="form-control"
+                  id="city-search-box"
+                />
+              </div>
+              <div class="col-3">
+                <input
+                  type="submit"
+                  value="Search"
+                  id="submit-button"
+                  class="btn btn-primary w-100"
+                />
+              </div>
+            </div>
+          </form>
           <h1 id="cityName"></h1>
 
           <div class="overview">
@@ -29,7 +49,7 @@
           <div class="row">
             <div class="col-6">
               <div class="d-flex weather-image">
-                <img src="" alt="sun icon" id="icon"/>
+                <img src="" alt="sun icon" id="icon" />
                 <strong id="temperature">32</strong>
                 <span class="units"
                   ><a href="#">°C</a> |<a href="#">°F</a></span
