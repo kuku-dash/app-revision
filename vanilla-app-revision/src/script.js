@@ -32,7 +32,8 @@ function formatDate(timestamp) {
 }
 
 function showTemperature(response) {
-  console.log(response);
+  celsiusElement = response.data.main.temp;
+
   let temp = document.querySelector("#temperature");
   let desc = document.querySelector("#description");
   let humidity = document.querySelector("#humidity");
@@ -41,7 +42,7 @@ function showTemperature(response) {
   let date = document.querySelector("#date");
   let icon = document.querySelector("#icon");
 
-  temp.innerHTML = Math.round(response.data.main.temp);
+  temp.innerHTML = Math.round(celsiusElement);
   desc.innerHTML = response.data.weather[0].description;
   humidity.innerHTML = response.data.main.humidity;
   wind.innerHTML = Math.round(response.data.wind.speed);
@@ -64,8 +65,25 @@ function searchInput(event) {
   cityInput = document.querySelector("#city-search-box");
   search(cityInput.value);
 }
-
-search("Lagos");
+function convertFahrenheit(event) {
+  event.preventDefault();
+  let fahrenheiTemp = (29 * 9) / 5 + 32;
+  let temperatureElement = document.querySelector("#temperature");
+  temperatureElement.innerHTML = Math.round(fahrenheiTemp);
+}
+function displayCelsius(event) {
+  event.preventDefault();
+  let temperatureElement = document.querySelector("#temperature");
+  temperatureElement.innerHTML = Math.round(celsiusElement);
+}
 
 let form = document.querySelector("#search-form");
 form.addEventListener("submit", searchInput);
+
+let celsius = document.querySelector("#celsius-link");
+celsius.addEventListener("click", displayCelsius);
+
+let fahrenheit = document.querySelector("#fahrenheit-link");
+fahrenheit.addEventListener("click", convertFahrenheit);
+
+search("Lagos");
